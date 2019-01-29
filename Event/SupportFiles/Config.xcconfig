@@ -1,0 +1,13 @@
+//
+//  Config.xcconfig
+//  Event
+//
+//  Created by Josh Slebodnik on 1/29/19.
+//  Copyright © 2019 Josh Slebodnik. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include "Pods/Target Support Files/Pods-Event/Pods-Event.release.xcconfig"
+//File is for Production settings
+base_url = challenge.myriadapps.com/api/v1/
