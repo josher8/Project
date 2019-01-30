@@ -16,7 +16,7 @@
 		8875451522011A5000B78412 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875451422011A5000B78412 /* EventTests.swift */; };
 		8875452022011A5000B78412 /* EventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875451F22011A5000B78412 /* EventUITests.swift */; };
 		8875452F22011CD400B78412 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8875452E22011CD400B78412 /* Development.xcconfig */; };
-		8875453122011DED00B78412 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8875453022011DED00B78412 /* Config.xcconfig */; };
+		8875453122011DED00B78412 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8875453022011DED00B78412 /* Production.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 		8875451F22011A5000B78412 /* EventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUITests.swift; sourceTree = "<group>"; };
 		8875452122011A5000B78412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8875452E22011CD400B78412 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
-		8875453022011DED00B78412 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		8875453022011DED00B78412 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		9042EB401CBC551B28C98AE5 /* Pods-Event.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event.release.xcconfig"; path = "Pods/Target Support Files/Pods-Event/Pods-Event.release.xcconfig"; sourceTree = "<group>"; };
 		907242E0AE34AC7229B35423 /* Pods_Event.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC3E225CA9E90CBD0B2512D /* Pods-Event.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Event/Pods-Event.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				8875452E22011CD400B78412 /* Development.xcconfig */,
-				8875453022011DED00B78412 /* Config.xcconfig */,
+				8875453022011DED00B78412 /* Production.xcconfig */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8875452F22011CD400B78412 /* Development.xcconfig in Resources */,
-				8875453122011DED00B78412 /* Config.xcconfig in Resources */,
+				8875453122011DED00B78412 /* Production.xcconfig in Resources */,
 				8875450A22011A5000B78412 /* LaunchScreen.storyboard in Resources */,
 				8875450722011A5000B78412 /* Assets.xcassets in Resources */,
 				8875450522011A4F00B78412 /* Main.storyboard in Resources */,
@@ -515,12 +515,13 @@
 		};
 		8875452522011A5000B78412 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEC3E225CA9E90CBD0B2512D /* Pods-Event.debug.xcconfig */;
+			baseConfigurationReference = 8875452E22011CD400B78412 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DGNM4S4T2;
 				INFOPLIST_FILE = Event/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -534,12 +535,13 @@
 		};
 		8875452622011A5000B78412 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9042EB401CBC551B28C98AE5 /* Pods-Event.release.xcconfig */;
+			baseConfigurationReference = 8875453022011DED00B78412 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DGNM4S4T2;
 				INFOPLIST_FILE = Event/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
