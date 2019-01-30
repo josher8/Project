@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 public enum LoginRouter: URLRequestConvertible {
+    
     enum LoginConstants {
         //Base URL Path. Gets configuration variables. Would be different base url for Dev and Prod
         static let baseURLPath = Bundle.main.infoDictionary!["base_url"] as! String
@@ -54,6 +55,5 @@ public enum LoginRouter: URLRequestConvertible {
         return try URLEncoding.default.encode(request, with: parameters)
         
     }
-    
     
 }
