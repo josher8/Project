@@ -172,8 +172,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //Removes user token
     @IBAction func logout(_ sender: UIBarButtonItem) {
+        clearData()
+    }
+    
+    func clearData(){
+        //Removes token and empties array.
         if UserDefaults.standard.object(forKey: "token") != nil{
             UserDefaults.standard.set(nil, forKey: "token")
+            eventArray.removeAll()
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
     }
