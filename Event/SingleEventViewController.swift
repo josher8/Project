@@ -20,8 +20,6 @@ class SingleEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         //Make sure event is here
         if event != nil {
@@ -53,18 +51,12 @@ class SingleEventViewController: UIViewController {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func pressedLocationButton(_ sender: UIButton) {
         
+        //Need coordinates maybe. Would open up in maps app.
+//        if let locationURL = URL(string: String(format: "http://maps.apple.com/?q=%@,%@&address=%@", locationlatitude, locationLongitude, event?.location!)) {
+//            UIApplication.shared.open(locationURL, options: [:], completionHandler: nil)
+//        }
     }
     
 }
