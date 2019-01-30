@@ -96,6 +96,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //Pass event object to Single Event
+        let event = eventArray[indexPath.row]
+        self.performSegue(withIdentifier: "eventSegue", sender: event)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "eventSegue" {
+            let singleEventController = segue.destination as? SingleEventViewController
+            singleEventController?.event = sender as? Event
+        }
+        
+    }
+    
     func loadEventList(completion: @escaping ([Event]?) -> Void){
         
         Alamofire.request(EventRouter.events).responseString { response in
