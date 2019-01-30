@@ -16,14 +16,15 @@ protocol reloadEvents {
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, reloadEvents {
     
-    
-    
     @IBOutlet var tableView: UITableView!
     
     var eventArray: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set title
+        self.title = "Events"
         
         //If user hasn't logged in, show login view
         if UserDefaults.standard.object(forKey: "token") == nil || UserDefaults.standard.object(forKey: "token") as! String == ""{
@@ -33,11 +34,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else{
             self.loadEventList() { events in
                 if events != nil {
+                    
                     self.eventArray = events!
                     print(self.eventArray)
                     self.tableView.reloadData()
+                    
                 } else {
-                    print("Event Nil")
+                    
+                    let alert = UIAlertController.init(title: "Error", message: "There was an error getting event data. Please try log in again", preferredStyle: UIAlertController.Style.alert)
+                    let defaultAction = UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                        
+                        if UserDefaults.standard.object(forKey: "token") != nil{
+                            UserDefaults.standard.set(nil, forKey: "token")
+                        }
+                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    })
+                    alert.addAction(defaultAction)
+                    self.present(alert, animated: true, completion: nil)
+                    
                 }
             }
         }
@@ -104,6 +118,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             singleEventController?.event = sender as? Event
         }
         
+        //Set self delegate in LoginViewController so can reload table view after authentication
         if segue.identifier == "loginSegue" {
             let loginController = segue.destination as? LoginViewController
             loginController?.delegate = self
@@ -146,13 +161,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    //Removes user token
     @IBAction func logout(_ sender: UIBarButtonItem) {
         if UserDefaults.standard.object(forKey: "token") != nil{
             UserDefaults.standard.set(nil, forKey: "token")
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
     }
-    
 
 }
 

@@ -64,9 +64,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func handleTextFieldTap(_ tapGestureRecognizer:UITapGestureRecognizer){
+        
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
         view.removeGestureRecognizer(textFieldTapRecognizer)
+        
     }
     
     
@@ -97,6 +99,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }else {
                     
                     self.loginView.addGestureRecognizer(self.loginGesture)
+                    let alert = UIAlertController.init(title: "Error", message: "There was an error logging in.", preferredStyle: UIAlertController.Style.alert)
+                    let defaultAction = UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default, handler: {action in })
+                    alert.addAction(defaultAction)
+                    self.present(alert, animated: true, completion: nil)
                     
                 }
             }
