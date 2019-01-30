@@ -10,4 +10,4 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 #include "Pods/Target Support Files/Pods-Event/Pods-Event.debug.xcconfig"
 //File is for Development settings
-base_url = challenge.myriadapps.com/api/v1/
+base_url = challenge.myriadapps.com/api/v1

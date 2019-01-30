@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		68110698F2DA2A5EC8334D8A /* Pods_Event.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907242E0AE34AC7229B35423 /* Pods_Event.framework */; };
 		8875450022011A4F00B78412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887544FF22011A4F00B78412 /* AppDelegate.swift */; };
-		8875450222011A4F00B78412 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875450122011A4F00B78412 /* ViewController.swift */; };
+		8875450222011A4F00B78412 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875450122011A4F00B78412 /* HomeViewController.swift */; };
 		8875450522011A4F00B78412 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8875450322011A4F00B78412 /* Main.storyboard */; };
 		8875450722011A5000B78412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8875450622011A5000B78412 /* Assets.xcassets */; };
 		8875450A22011A5000B78412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8875450822011A5000B78412 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,9 @@
 		8875452022011A5000B78412 /* EventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875451F22011A5000B78412 /* EventUITests.swift */; };
 		8875452F22011CD400B78412 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8875452E22011CD400B78412 /* Development.xcconfig */; };
 		8875453122011DED00B78412 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8875453022011DED00B78412 /* Production.xcconfig */; };
+		887545352201236400B78412 /* EventRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887545342201236400B78412 /* EventRouter.swift */; };
+		88754537220123C200B78412 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88754536220123C200B78412 /* LoginRouter.swift */; };
+		8875453A220129DF00B78412 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88754539220129DF00B78412 /* Token.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,7 @@
 /* Begin PBXFileReference section */
 		887544FC22011A4F00B78412 /* Event.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Event.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887544FF22011A4F00B78412 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8875450122011A4F00B78412 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8875450122011A4F00B78412 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8875450422011A4F00B78412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8875450622011A5000B78412 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8875450922011A5000B78412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +55,9 @@
 		8875452122011A5000B78412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8875452E22011CD400B78412 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		8875453022011DED00B78412 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		887545342201236400B78412 /* EventRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRouter.swift; sourceTree = "<group>"; };
+		88754536220123C200B78412 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		88754539220129DF00B78412 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		9042EB401CBC551B28C98AE5 /* Pods-Event.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event.release.xcconfig"; path = "Pods/Target Support Files/Pods-Event/Pods-Event.release.xcconfig"; sourceTree = "<group>"; };
 		907242E0AE34AC7229B35423 /* Pods_Event.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC3E225CA9E90CBD0B2512D /* Pods-Event.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Event/Pods-Event.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,8 +122,11 @@
 		887544FE22011A4F00B78412 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				88754538220129CD00B78412 /* Models */,
+				88754536220123C200B78412 /* LoginRouter.swift */,
+				887545342201236400B78412 /* EventRouter.swift */,
 				887544FF22011A4F00B78412 /* AppDelegate.swift */,
-				8875450122011A4F00B78412 /* ViewController.swift */,
+				8875450122011A4F00B78412 /* HomeViewController.swift */,
 				8875450322011A4F00B78412 /* Main.storyboard */,
 				8875450622011A5000B78412 /* Assets.xcassets */,
 				8875450822011A5000B78412 /* LaunchScreen.storyboard */,
@@ -152,6 +161,14 @@
 				8875453022011DED00B78412 /* Production.xcconfig */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		88754538220129CD00B78412 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				88754539220129DF00B78412 /* Token.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E98074803BB2E9DB48DB5340 /* Pods */ = {
@@ -341,7 +358,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8875450222011A4F00B78412 /* ViewController.swift in Sources */,
+				8875453A220129DF00B78412 /* Token.swift in Sources */,
+				8875450222011A4F00B78412 /* HomeViewController.swift in Sources */,
+				88754537220123C200B78412 /* LoginRouter.swift in Sources */,
+				887545352201236400B78412 /* EventRouter.swift in Sources */,
 				8875450022011A4F00B78412 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
