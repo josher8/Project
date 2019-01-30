@@ -22,6 +22,7 @@
 		8875453A220129DF00B78412 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88754539220129DF00B78412 /* Token.swift */; };
 		8875453C2201325D00B78412 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875453B2201325D00B78412 /* Event.swift */; };
 		8875453E2201424400B78412 /* SingleEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875453D2201424400B78412 /* SingleEventViewController.swift */; };
+		8875454022014DD600B78412 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875453F22014DD600B78412 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		88754539220129DF00B78412 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		8875453B2201325D00B78412 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8875453D2201424400B78412 /* SingleEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventViewController.swift; sourceTree = "<group>"; };
+		8875453F22014DD600B78412 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9042EB401CBC551B28C98AE5 /* Pods-Event.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event.release.xcconfig"; path = "Pods/Target Support Files/Pods-Event/Pods-Event.release.xcconfig"; sourceTree = "<group>"; };
 		907242E0AE34AC7229B35423 /* Pods_Event.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Event.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC3E225CA9E90CBD0B2512D /* Pods-Event.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Event.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Event/Pods-Event.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				88754536220123C200B78412 /* LoginRouter.swift */,
 				887545342201236400B78412 /* EventRouter.swift */,
 				887544FF22011A4F00B78412 /* AppDelegate.swift */,
+				8875453F22014DD600B78412 /* LoginViewController.swift */,
 				8875450122011A4F00B78412 /* HomeViewController.swift */,
 				8875453D2201424400B78412 /* SingleEventViewController.swift */,
 				8875450322011A4F00B78412 /* Main.storyboard */,
@@ -368,6 +371,7 @@
 				8875453E2201424400B78412 /* SingleEventViewController.swift in Sources */,
 				8875450222011A4F00B78412 /* HomeViewController.swift in Sources */,
 				88754537220123C200B78412 /* LoginRouter.swift in Sources */,
+				8875454022014DD600B78412 /* LoginViewController.swift in Sources */,
 				887545352201236400B78412 /* EventRouter.swift in Sources */,
 				8875453C2201325D00B78412 /* Event.swift in Sources */,
 				8875450022011A4F00B78412 /* AppDelegate.swift in Sources */,

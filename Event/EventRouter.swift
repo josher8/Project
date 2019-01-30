@@ -14,9 +14,6 @@ public enum EventRouter: URLRequestConvertible {
     enum EventConstants {
         //Base URL Path. Gets configuration variables. Would be different base url for Dev and Prod
         static let baseURLPath = Bundle.main.infoDictionary!["base_url"] as! String
-        //Gets token from user defaults.
-//        static let token = UserDefaults.standard.object(forKey: "token") as! String
-        static let token = "supersecrettoken"
     }
     
     case events
@@ -62,9 +59,15 @@ public enum EventRouter: URLRequestConvertible {
         
         let url = try EventConstants.baseURLPath.asURL()
         
+        //Gets token from user defaults.
+        var token = ""
+        if UserDefaults.standard.object(forKey: "token") != nil{
+            token = UserDefaults.standard.object(forKey: "token") as! String
+        }
+        
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
-        request.setValue(EventConstants.token, forHTTPHeaderField: "Authorization")
+        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         return try URLEncoding.default.encode(request, with: parameters)
         

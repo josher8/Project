@@ -10,7 +10,13 @@ import UIKit
 import Alamofire
 import SDWebImage
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol reloadEvents {
+    func retryList()
+}
+
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, reloadEvents {
+    
+    
     
     @IBOutlet var tableView: UITableView!
     
@@ -18,39 +24,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        self.login(username: "Test", password: "Test") { token in
-//            if token != nil {
-//                print("Token: ", token?.token)
-//            }else {
-//                print("Token Nil")
-//            }
-//        }
         
-        self.loadEventList() { events in
-            if events != nil {
-                self.eventArray = events!
-                print(self.eventArray)
-                self.tableView.reloadData()
-            } else {
-                print("Event Nil")
+        //If user hasn't logged in, show login view
+        if UserDefaults.standard.object(forKey: "token") == nil || UserDefaults.standard.object(forKey: "token") as! String == ""{
+            
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            
+        }else{
+            self.loadEventList() { events in
+                if events != nil {
+                    self.eventArray = events!
+                    print(self.eventArray)
+                    self.tableView.reloadData()
+                } else {
+                    print("Event Nil")
+                }
             }
         }
     }
     
-//    func login(username:String, password: String, completion: @escaping (Token?) -> Void){
-//
-//        Alamofire.request(LoginRouter.login(username,password)).responseString { response in
-//            guard response.result.isSuccess,
-//                let value = response.result.value else {
-//                    print("Error while getting token: \(String(describing: response.result.error))")
-//                    completion(nil)
-//                    return
-//            }
-//            completion(Token(json: value))
-//        }
-//    }
-    
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventArray.count
     }
@@ -111,6 +104,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             singleEventController?.event = sender as? Event
         }
         
+        if segue.identifier == "loginSegue" {
+            let loginController = segue.destination as? LoginViewController
+            loginController?.delegate = self
+        }
+        
     }
     
     func loadEventList(completion: @escaping ([Event]?) -> Void){
@@ -125,7 +123,36 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             completion([Event](json: value))
         }
     }
-
+    
+    //Tries to reload the tableview after a user logs in
+    func retryList(){
+        
+        //If user hasn't logged in, show login view
+        if UserDefaults.standard.object(forKey: "token") == nil || UserDefaults.standard.object(forKey: "token") as! String == ""{
+            
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            
+        }else{
+            self.loadEventList() { events in
+                if events != nil {
+                    self.eventArray = events!
+                    print(self.eventArray)
+                    self.tableView.reloadData()
+                } else {
+                    print("Event Nil")
+                }
+            }
+        }
+        
+    }
+    
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+        if UserDefaults.standard.object(forKey: "token") != nil{
+            UserDefaults.standard.set(nil, forKey: "token")
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
+    }
+    
 
 }
 
