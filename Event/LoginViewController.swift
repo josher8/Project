@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var loginLabel: UILabel!
     
     var loginGesture: UITapGestureRecognizer!
-    var loading: Bool!
+    var textFieldTapRecognizer: UITapGestureRecognizer!
     
     
     override func viewDidLoad() {
@@ -29,14 +29,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //Set up views
         loginView.layer.cornerRadius = 4
         loginGesture = UITapGestureRecognizer.init(target: self, action: #selector(self.pressedLoginButton(_:)))
+        
+        //Set Textfield Delegate
+        usernameField.delegate = self
+        passwordField.delegate = self
+        
+        //Add Text Field recognizer on view so you can dismiss the textfield
+        textFieldTapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleTextFieldTap(_:)))
+        textFieldTapRecognizer.cancelsTouchesInView = false
         loginView.addGestureRecognizer(loginGesture)
       
         
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.view.addGestureRecognizer(textFieldTapRecognizer)
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
+        self.view.removeGestureRecognizer(textFieldTapRecognizer)
         
         if textField == self.usernameField {
             passwordField.becomeFirstResponder()
@@ -49,8 +63,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @objc func handleTextFieldTap(_ tapGestureRecognizer:UITapGestureRecognizer){
+        usernameField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        view.removeGestureRecognizer(textFieldTapRecognizer)
+    }
+    
     
     @objc func pressedLoginButton(_ tapGestureRecognizer:UITapGestureRecognizer){
+        
+        //In a seperate function so can stil login by pressing return after password field
         loginPressed()
     }
     
@@ -105,16 +127,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             completion(Token(json: value))
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
