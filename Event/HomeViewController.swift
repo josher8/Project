@@ -26,15 +26,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Set title
         self.title = "Events"
         
-        //If user hasn't logged in, show login view
+        self.tableView.isHidden = true
+        
+        //If user hasn't logged in, show login view, else load event list
         if UserDefaults.standard.object(forKey: "token") == nil || UserDefaults.standard.object(forKey: "token") as! String == ""{
             
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
             
         }else{
+            
             self.loadEventList() { events in
                 if events != nil {
                     
+                    self.tableView.isHidden = false
                     self.eventArray = events!
                     print(self.eventArray)
                     self.tableView.reloadData()
@@ -109,6 +113,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let event = eventArray[indexPath.row]
         self.performSegue(withIdentifier: "eventSegue", sender: event)
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -150,9 +156,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else{
             self.loadEventList() { events in
                 if events != nil {
+                    
+                    self.tableView.isHidden = false
                     self.eventArray = events!
                     print(self.eventArray)
                     self.tableView.reloadData()
+                    
                 } else {
                     print("Event Nil")
                 }
