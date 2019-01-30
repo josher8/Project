@@ -88,6 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
             //Starts Alamofire login
             self.login(username: usernameField.text!, password: passwordField.text!) { token in
+                
                 if token != nil {
                     
                     //Saves Token in UserDefaults.
@@ -123,6 +124,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func login(username:String, password: String, completion: @escaping (Token?) -> Void){
         
+        //Post username and password. and returns token. Usually would have password encrypted
         Alamofire.request(LoginRouter.login(username,password)).responseString { response in
             guard response.result.isSuccess,
                 let value = response.result.value else {

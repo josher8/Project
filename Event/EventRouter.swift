@@ -12,7 +12,7 @@ import Alamofire
 public enum EventRouter: URLRequestConvertible {
     
     enum EventConstants {
-        //Base URL Path. Gets configuration variables. Would be different base url for Dev and Prod
+        //Base URL Path. Gets configuration variables from info plist. Would be different base url for Dev and Prod
         static let baseURLPath = Bundle.main.infoDictionary!["base_url"] as! String
     }
     

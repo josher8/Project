@@ -10,6 +10,5 @@ import EVReflection
 
 class Token: EVObject {
     var token: String = ""
-    var error: String = ""
 }
 
