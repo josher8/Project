@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Event.xcscheme_^#shared#^_</key>
+		<key>Event Development.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
+		</dict>
+		<key>Event Production.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>887544FB22011A4F00B78412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8875450F22011A5000B78412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8875451A22011A5000B78412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
